@@ -10,62 +10,62 @@
                 @csrf
                 <div class="form-group my-2">
                     <label for="">Mã khách hàng</label>
-                    <input type="text" name="customer_id" class="form-control" value="{{ $customer->customer_id }}" readonly>
-                    @error('customer_id')
+                    <input type="text" name="kntMaKH" class="form-control" value="{{ $KNTKhachhang->kntMaKH }}" readonly>
+                    @error('kntMaKH')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group my-2">
                     <label for="">Tên khách hàng</label>
-                    <input type="text" name="customer_name" class="form-control" value="{{ $customer->customer_name }}">
-                    @error('customer_name')
+                    <input type="text" name="kntHoTenKH" class="form-control" value="{{ $KNTKhachhang->kntHoTenKH }}">
+                    @error('kntHoTenKH')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group my-2">
                     <label for="">Email</label>
-                    <input type="email" name="email" class="form-control" value="{{ $customer->email }}">
-                    @error('email')
+                    <input type="email" name="kntEmail" class="form-control" value="{{ $KNTKhachhang->kntEmail }}">
+                    @error('kntEmail')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group my-2">
                     <label for="">Mật khẩu</label>
-                    <input type="password" name="plain_password" class="form-control" value="{{ $customer->plain_password }}">
-                    @error('plain_password')
+                    <input type="password" name="kntMatkhau" class="form-control" value="{{ $KNTKhachhang->kntMatkhau }}">
+                    @error('kntMatkhau')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group my-2">
                     <label for="">Số điện thoại</label>
-                    <input type="tel" name="phone" class="form-control" value="{{ $customer->phone }}">
-                    @error('phone')
+                    <input type="tel" name="kntDienthoai" class="form-control" value="{{ $KNTKhachhang->kntDienthoai }}">
+                    @error('kntDienthoai')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group my-2">
                     <label for="">Địa chỉ</label>
-                    <input type="text" name="location" class="form-control" value="{{ $customer->location }}">
-                    @error('location')
+                    <input type="text" name="kntDiachi" class="form-control" value="{{ $KNTKhachhang->kntDiachi }}">
+                    @error('kntDiachi')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group my-2">
                     <label for="">Trạng thái</label>
                     <div class="form-check">
-                        <input type="radio" class="form-check-input" name="status" value='0' {{ $customer->status == 0 ? "checked": " " }}>
+                        <input type="radio" class="form-check-input" name="kntStatus" value='0' {{ $KNTKhachhang->kntStatus == 0 ? "checked": " " }}>
                         <label for="" class="form-check-label">Đang hoạt động</label>
                     </div>
                     <div class="form-check">
-                        <input type="radio" class="form-check-input" name="status" value='1' {{ $customer->status == 1   ? "checked": " " }}>
+                        <input type="radio" class="form-check-input" name="kntStatus" value='1' {{ $KNTKhachhang->kntStatus == 1   ? "checked": " " }}>
                         <label for="" class="form-check-label">Đã khóa</label>
                     </div>
-                    @error('status')
+                    @error('kntStatus')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <input type="submit" value="Sửa" class="btn btn-primary my-2">
-                <a href="/admin/customer" class="btn btn-outline-secondary">Hủy</a>
+                <a href="{{ route('KNTadmin.KNTKhachhang.index') }}" class="btn btn-outline-secondary">Hủy</a>
             </form>
         </div>
         <div class="col-sm-3"></div>

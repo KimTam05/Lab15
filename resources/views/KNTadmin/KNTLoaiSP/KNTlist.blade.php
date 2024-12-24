@@ -33,7 +33,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <a href="{{ route('KNTadmin.KNTLoaiSP.show', ['kntMaLoai'=> $item->kntMaLoai]) }}" class="btn btn-outline-secondary"><i class="fa-solid fa-circle-info"></i></a>
-                                    <a href="{{ route('KNTadmin.KNTLoaiSP.edit', ['kntMaLoai'=> $item->kntMaLoai]) }}" class="btn btn-outline-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a href="{{ route('KNTadmin.KNTLoaiSP.edit', ['kntMaLoai'=> $item->kntMaLoai]) }}" class="btn btn-outline-primary"><i class="fa-solid fa-pen-to-square"></i></a>
                                         <button class="btn btn-outline-danger" type="submit" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"><i class="fa-solid fa-trash"></i></button>
                                     </form>
                                 </td>

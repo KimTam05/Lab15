@@ -10,35 +10,35 @@
                 @csrf
                 <div class="form-group my-2">
                     <label for="">Mã sản phẩm</label>
-                    <input type="text" name="kntMaSP" class="form-control" placeholder="Nhập mã sản phẩm">
+                    <input type="text" name="kntMaSP" class="form-control" placeholder="Nhập mã sản phẩm" value="{{ old('kntMaSP') }}">
                     @error('kntMaSP')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group my-2">
                     <label for="">Tên sản phẩm</label>
-                    <input type="text" name="kntTenSP" class="form-control" placeholder="Nhập tên sản phẩm">
+                    <input type="text" name="kntTenSP" class="form-control" placeholder="Nhập tên sản phẩm" value="{{ old('kntTenSP') }}">
                     @error('kntTenSP')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group my-2">
                     <label for="">Ảnh</label>
-                    <input type="file" name="kntHinhAnh" class="form-control">
+                    <input type="file" name="kntHinhAnh" class="form-control" value="{{ old('kntHinhAnh') }}">
                     @error('kntHinhAnh')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group my-2">
                     <label for="">Số lượng</label>
-                    <input type="number" name="kntSoLuong" class="form-control" placeholder="Nhập số lượng sản phẩm">
+                    <input type="number" name="kntSoLuong" class="form-control" placeholder="Nhập số lượng sản phẩm" value="{{ old('kntSoLuong') }}">
                     @error('kntSoLuong')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group my-2">
                     <label for="">Đơn giá</label>
-                    <input type="text" name="kntDongia" class="form-control" placeholder="Nhập giá sản phẩm">
+                    <input type="text" name="kntDongia" class="form-control" placeholder="Nhập giá sản phẩm" value="{{ old('kntDongia') }}">
                     @error('kntDongia')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror

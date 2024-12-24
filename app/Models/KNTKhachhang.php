@@ -9,5 +9,5 @@ class KNTKhachhang extends Model
 {
     use HasFactory;
     protected $table = 'kntkhachhang';
-    protected $fillable = ['kntMaKH', 'kntHoTenKH', 'kntEmail', 'kntMatkhau', 'kntDienthoai', 'kntDiachi', 'kntStatus'];
+    protected $fillable = ['kntMaKH', 'kntHoTenKH', 'kntEmail', 'kntMatkhau', 'kntDienthoai', 'kntDiachi', 'kntNgayDangKy', 'kntStatus'];
 }

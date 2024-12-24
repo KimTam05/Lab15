@@ -23,9 +23,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($KNTSanpham as $key => $item)
+                        @forelse ($KNTSanpham as $item)
                             <tr>
-                                <td>{{ $KNTSanpham ->firstItem() + $key }}</td>
+                                <td>1</td>
                                 <td>{{ $item->kntMaSP }}</td>
                                 <td>{{ $item->kntTenSP }}</td>
                                 <td><img src="{{asset('storage/' . $item->kntHinhAnh)}}" style="width: 150px; height: 150px"></td>
@@ -43,17 +43,21 @@
                                     </form>
                                 </td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
+                                <td colspan="9">Không có dữ liệu</td>
+                            </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div> <!-- /.card-body -->
             <div class="card-footer clearfix">
                 <a href="{{ route('KNTadmin.KNTSanpham.create') }}" class="btn btn-success">Thêm mới</a>
-                <ul class="pagination pagination-sm m-0 float-end">
+                {{-- <ul class="pagination pagination-sm m-0 float-end">
                     <li class="page-item"> <a class="page-link" href="{{ $KNTSanpham->previousPageUrl() }}">«</a> </li>
                     <li class="page-item"> <a class="page-link" href="{{ $KNTSanpham->currentPage() }}">{{ $KNTSanpham->currentPage() }}</a> </li>
                     <li class="page-item"> <a class="page-link" href="{{ $KNTSanpham->nextPageUrl() }}">»</a> </li>
-                </ul>
+                </ul> --}}
             </div>
         </div>
     </div>

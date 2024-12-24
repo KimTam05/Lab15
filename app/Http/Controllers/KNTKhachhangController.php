@@ -31,10 +31,15 @@ class KNTKhachhangController extends Controller
      */
     public function KNTstore(Request $request)
     {
+        $request->merge([
+            'kntStatus' => $request->input('kntStatus', 0),
+            'kntNgayDangKy' => now(), // Gán giá trị ngày đăng ký
+        ]);
+
         $request->validate([
             'kntMaKH'=>'required',
             'kntHoTenKH'=>'required',
-            'kntEmail'=>'required|unique:KNTKhachhang,email',
+            'kntEmail'=>'required|unique:kntkhachhang,kntEmail',
             'kntMatkhau'=>'required|min:6',
             'kntDienthoai'=> 'required',
             'kntDiachi'=>'required',
@@ -42,7 +47,7 @@ class KNTKhachhangController extends Controller
         ]);
         $data = $request->except('_token');
         KNTKhachhang::create($data);
-        return redirect('/knt-admin/knt-khachhang');
+        return redirect()->route('KNTadmin.KNTKhachhang.index');
     }
 
     /**
@@ -57,27 +62,29 @@ class KNTKhachhangController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $KNTKhachhang)
+    public function KNTupdate(Request $request, $KNTKhachhang)
     {
+        $khachhang = KNTKhachhang::where('kntMaKH', $KNTKhachhang);
+
         $request->validate([
             'kntMaKH'=>'required',
             'kntHoTenKH'=>'required',
-            'kntEmail'=>'required|unique:KNTKhachhang,email',
+            'kntEmail'=>'required|unique:kntkhachhang,kntEmail,'.$KNTKhachhang.',kntMaKH',
             'kntMatkhau'=>'required|min:6',
             'kntDienthoai'=> 'required',
             'kntDiachi'=>'required',
             'kntStatus'=>'required|in:0,1',
         ]);
-        $data = $request->except('_token');
-        KNTKhachhang::where('kntMaKH', $KNTKhachhang)->update($data);
-        return redirect('/knt-admin/knt-khachhang');
+        $khachhang->update($request->except('_token'));
+        return redirect()->route('KNTadmin.KNTKhachhang.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(KNTKhachhang $KNTKhachhang)
+    public function KNTdestroy($KNTKhachhang)
     {
-        //
+        KNTKhachhang::where('kntMaKH', $KNTKhachhang)->delete();
+        return redirect()->route('KNTadmin.KNTKhachhang.index');
     }
 }

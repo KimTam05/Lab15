@@ -7,6 +7,7 @@ use App\Models\KNTKhachhang;
 use App\Models\KNTSanpham;
 use Illuminate\Http\Request;
 use App\Models\KNTQuanTri;
+use Illuminate\Support\Facades\Session;
 
 
 class KNTDangnhapController extends Controller
@@ -21,27 +22,30 @@ class KNTDangnhapController extends Controller
         return view('KNTadmin.index', ['KNTQuantri_count' => $KNTQuantri_count, 'KNTLoaiSP_count' => $KNTLoaiSP_count, 'KNTSanpham_count' => $KNTSanpham_count, 'KNTKhachhang_count' => $KNTKhachhang_count]);
     }
     public function KNTlogin(){
-        return view('KNTadmin.KNTlogin');
+        return view('KNTadmin.login');
     }
     public function KNTloginSubmit(Request $request){
         $request->validate([
-            'username' => 'required|exists:users',
-            'password' => 'required',
+            'kntTaikhoan'=>'required|exists:kntquantri',
+            'kntMatkhau'=>'required'
         ]);
-        $data = $request -> only('username', 'password');
-        $KNTTaikhoan = KNTQuanTri::where('username',$request['username'])->first();
-        if($data['password'] == $KNTTaikhoan['password']){
+
+        $data = $request -> only('kntTaikhoan', 'kntMatkhau');
+        $KNTTaikhoan = KNTQuanTri::where('kntTaikhoan',$data['kntTaikhoan'])->first();
+        if($data['kntMatkhau'] == $KNTTaikhoan['kntMatkhau']){
             if($KNTTaikhoan->kntStatus == 0){
-                return redirect()->route('KNTQuanTri.index', ['KNTTaikhoan' => $KNTTaikhoan->kntTaikhoan]);
+                Session::put('KNTQuanTri', $KNTTaikhoan->kntTaikhoan);
+                return redirect()->route('KNTadmin.index');
             }
             else{
                 return redirect()->back()->withErrors(['message' => 'Tài khoản đã bị khóa!']);
             }
         }
 
-        return redirect()->back()->withErrors(['message' => 'Mật khẩu không đúng!']);
+        return redirect()->back()->with(['message' => 'Mật khẩu không đúng!']);
     }
     public function KNTlogout(){
-        return redirect()->route('KNTQuanTri.KNTlogin');
+        session()->forget('KNTQuanTri');
+        return redirect()->route('KNTadmin.login');
     }
 }

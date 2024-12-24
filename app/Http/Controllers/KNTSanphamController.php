@@ -13,7 +13,7 @@ class KNTSanphamController extends Controller
      */
     public function KNTindex()
     {
-        $KNTSanpham = KNTSanpham::paginate(10);
+        $KNTSanpham = KNTSanpham::where('kntStatus', 0)->get();
         return view('KNTadmin.KNTSanpham.KNTlist', ['KNTSanpham'=>$KNTSanpham]);
     }
 

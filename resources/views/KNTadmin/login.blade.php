@@ -17,18 +17,19 @@
                 <p class="login-box-msg">Đăng nhập để bắt đầu tiến trình của bạn</p>
                 <form action="" method="post">
                     @csrf
-                    <div class="input-group mb-3"> <input type="text" class="form-control" placeholder="Username" name="ktnTaiKhoan">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Tên tài khoản" name="kntTaikhoan" value="{{ old('kntTaikhoan') }}">
                         <div class="input-group-text"> <span class="bi bi-envelope"></span> </div>
-                        @error('ktnTaiKhoan')
-                            <small class="text-danger">{{ $message }}</small>
-                        @enderror
                     </div>
-                    <div class="input-group mb-3"> <input type="password" class="form-control" name="ktnMatKhau" placeholder="Password">
+                    @error('kntTaikhoan')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror
+                    <div class="input-group mb-3"> <input type="password" class="form-control" name="kntMatkhau" placeholder="Mật khẩu">
                         <div class="input-group-text"> <span class="bi bi-lock-fill"></span> </div>
-                        @error('ktnMatKhau')
-                            <small class="text-danger">{{ $message }}</small>
-                        @enderror
-                    </div> <!--begin::Row-->
+                    </div>
+                    @error('kntMatkhau')
+                        <small class="text-danger">{{ $message }}</small>
+                    @enderror <!--begin::Row-->
                     <div class="row">
                         <div class="col-4"></div>
                         <div class="col-4">

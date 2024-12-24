@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('kntMatkhau');
             $table->string('kntDienthoai',10)->unique();
             $table->string('kntDiachi');
-            $table->dateTime('kntNgayDangKy');
+            $table->timestamp('kntNgayDangKy');
             $table->tinyInteger('kntStatus');
             $table->timestamps();
         });

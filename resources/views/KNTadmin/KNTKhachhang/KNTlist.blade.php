@@ -18,40 +18,46 @@
                                 <th>Mật khẩu</th>
                                 <th>SĐT</th>
                                 <th>Địa điểm</th>
+                                <th>Ngày đăng ký</th>
                                 <th>Trạng thái</th>
-                                <th class="text-center  ">Chỉnh sửa</th>
+                                <th class="text-center">Chỉnh sửa</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($customer as $item)
+                            @forelse ($KNTKhachhang as $item)
                                 <tr>
                                     <td>{{ $item->id }}</td>
-                                    <td>{{ $item->customer_id }}</td>
-                                    <td>{{ $item->customer_name }}</td>
-                                    <td>{{ $item->email }}</td>
-                                    <td>{{ $item->plain_password }}</td>
-                                    <td>{{ $item->phone }}</td>
-                                    <td>{{ $item->location }}</td>
-                                    <td>{{ $item->status == 0 ? "Đang hoạt động": "Đã khóa"}}</td>
+                                    <td>{{ $item->kntMaKH }}</td>
+                                    <td>{{ $item->kntHoTenKH }}</td>
+                                    <td>{{ $item->kntEmail }}</td>
+                                    <td>{{ $item->kntMatkhau }}</td>
+                                    <td>{{ $item->kntDienthoai }}</td>
+                                    <td>{{ $item->kntDiachi }}</td>
+                                    <td>{{ $item->kntNgayDangKy }}</td>
+                                    <td>{{ $item->kntStatus == 0 ? "Đang hoạt động": "Đã khóa"}}</td>
                                     <td class="text-center">
-                                        <a href="/admin/customer/{{$item->id}}" class="btn btn-outline-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                                        <a href="/admin/customer/{{$item->id}}/delete" class="btn btn-outline-danger"><i class="fa-solid fa-trash"></i></a>
+                                        <form action="{{ route('KNTadmin.KNTKhachhang.delete', ['kntMaKH'=>$item->kntMaKH]) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <a href="{{ route('KNTadmin.KNTKhachhang.edit', ['kntMaKH'=>$item->kntMaKH]) }}" class="btn btn-outline-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                            <button class="btn btn-outline-danger" type="submit" onclick=" return confirm('Ban có chắc chắn muốn xóa tài khoản này?') "><i class="fa-solid fa-trash"></i></button>
+                                        </form>
                                     </td>
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="9">Không có dữ liệu</td>
+                                    <td colspan="10" class="text-center">Không có dữ liệu</td>
                                 </tr>
                             @endforelse
                         </tbody>
                     </table>
                 </div>
                 <div class="card-footer">
-                    <a href="/admin/customer/create" class="btn btn-primary">Thêm mới</a>
+                    <a href="{{ route('KNTadmin.KNTKhachhang.create') }}" class="btn btn-primary">Thêm mới</a>
                     <ul class="pagination pagination-sm m-0 float-end">
-                        <li class="page-item"> <a class="page-link" href="{{ $customer->previousPageUrl() }}">«</a> </li>
-                        <li class="page-item"> <a class="page-link" href="{{ $customer->currentPage() }}">{{ $customer->currentPage() }}</a> </li>
-                        <li class="page-item"> <a class="page-link" href="{{ $customer->nextPageUrl() }}">»</a> </li>
+                        <li class="page-item"> <a class="page-link" href="{{ $KNTKhachhang->previousPageUrl() }}">«</a> </li>
+                        <li class="page-item"> <a class="page-link" href="{{ $KNTKhachhang->currentPage() }}">{{ $KNTKhachhang->currentPage() }}</a> </li>
+                        <li class="page-item"> <a class="page-link" href="{{ $KNTKhachhang->nextPageUrl() }}">»</a> </li>
                     </ul>
                 </div>
             </div>
