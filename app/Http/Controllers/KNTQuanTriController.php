@@ -65,6 +65,10 @@ class KNTQuanTriController extends Controller
         ]);
         $data = $request->except('_token');
         KNTQuanTri::where('id', $KNTQuanTri)->update($data);
+        $KNTcheck = KNTQuanTri::where('id', $KNTQuanTri)->first();
+        if($data['kntStatus'] == 1){
+            return redirect()->route('KNTadmin.logout');
+        }
         return redirect()->route('KNTadmin.KNTQuanTri.index');
     }
 

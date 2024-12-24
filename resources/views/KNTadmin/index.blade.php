@@ -1,4 +1,4 @@
-@extends('KNTadmin.layouts.master')
+@extends('KNTadmin.KNTlayouts.KNTmaster')
 @section('title', 'Dashboard')
 @section('content')
     <div class="container-fluid my-3"> <!--begin::Row-->

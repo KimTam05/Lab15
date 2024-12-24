@@ -1,5 +1,5 @@
-@extends('KNTadmin.layouts.master')
-@section('title', 'Thêm mới danh mục')
+@extends('KNTadmin.KNTlayouts.KNTmaster')
+@section('title', 'Thêm mới khách hàng')
 @section('content')
 <div class="container py-4">
     <div class="row">

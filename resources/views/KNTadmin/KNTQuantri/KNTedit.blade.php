@@ -1,4 +1,4 @@
-@extends('KNTadmin.layouts.master')
+@extends('KNTadmin.KNTlayouts.KNTmaster')
 @section('title','Sửa tài khoản quản trị')
 @section('content')
 <div class="container py-4">

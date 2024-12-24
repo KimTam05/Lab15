@@ -18,18 +18,29 @@
                 <form action="" method="post">
                     @csrf
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Tên tài khoản" name="kntTaikhoan" value="{{ old('kntTaikhoan') }}">
+                        <input type="text" class="form-control" placeholder="Tên tài khoản" name="kntTaikhoan">
                         <div class="input-group-text"> <span class="bi bi-envelope"></span> </div>
                     </div>
-                    @error('kntTaikhoan')
-                        <small class="text-danger">{{ $message }}</small>
-                    @enderror
+                    @if (session('kntTaikhoan'))
+                        <div class="alert alert-danger">
+                            {{ session('kntTaikhoan') }}
+                        </div>
+                    @endif
                     <div class="input-group mb-3"> <input type="password" class="form-control" name="kntMatkhau" placeholder="Mật khẩu">
                         <div class="input-group-text"> <span class="bi bi-lock-fill"></span> </div>
                     </div>
-                    @error('kntMatkhau')
-                        <small class="text-danger">{{ $message }}</small>
-                    @enderror <!--begin::Row-->
+                    @if (session('kntMatkhau'))
+                        <div class="alert alert-danger">
+                            {{ session('kntMatkhau') }}
+                        </div>
+                    @endif
+
+                    @if (session('kntStatus'))
+                        <div class="alert alert-danger">
+                            {{ session('kntStatus') }}
+                        </div>
+                    @endif
+
                     <div class="row">
                         <div class="col-4"></div>
                         <div class="col-4">

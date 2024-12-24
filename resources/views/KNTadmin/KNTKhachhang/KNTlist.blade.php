@@ -1,5 +1,5 @@
-@extends('KNTadmin.layouts.master')
-@section('title', 'Customer ')
+@extends('KNTadmin.KNTlayouts.KNTmaster')
+@section('title', 'Khách hàng')
 @section('content')
     <div class="container">
         <div class="col-12">

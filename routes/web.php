@@ -6,6 +6,7 @@ use App\Http\Controllers\KNTQuanTriController;
 use App\Http\Controllers\KNTSanphamController;
 use App\Http\Controllers\KNTKhachhangController;
 use App\Http\Controllers\KNTHoadonController;
+use App\Http\Controllers\KNTCTHoadonController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -57,14 +58,5 @@ Route::group(['prefix' => 'knt-admin', 'middleware' => 'KNTadmin.auth'], functio
         Route::get('{kntMaKH}/edit', [KNTKhachhangController::class, 'KNTedit'])->name('KNTadmin.KNTKhachhang.edit');
         Route::post('{kntMaKH}/edit', [KNTKhachhangController::class, 'KNTupdate']);
         Route::delete('/{kntMaKH}/delete', [KNTKhachhangController::class, 'KNTdestroy'])->name('KNTadmin.KNTKhachhang.delete');
-    });
-    Route::group(['prefix' => 'knt-hoadon'], function(){
-        Route::get('/', [KNTHoadonController::class,'KNTindex'])->name('KNTadmin.KNTHoadon.index');
-        Route::get('/create', [KNTHoadonController::class,'KNTcreate'])->name('KNTadmin.KNTHoadon.create');
-        Route::post('/create', [KNTHoadonController::class, 'KNTstore']);
-        // Route::get('/{kntMaHD}', [KNTHoadonController::class, 'KNTshow'])->name('KNTadmin.KNTHoadon.show');
-        // Route::get('{kntMaHD}/edit', [KNTHoadonController::class, 'KNTedit'])->name('KNTadmin.KNTHoadon.edit');
-        // Route::post('{kntMaHD}/edit', [KNTHoadonController::class, 'KNTupdate']);
-        // Route::delete('/{kntMaHD}/delete', [KNTHoadonController::class, 'KNTdestroy'])->name('KNTadmin.KNTHoadon.delete');
     });
 });

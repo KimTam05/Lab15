@@ -25,24 +25,27 @@ class KNTDangnhapController extends Controller
         return view('KNTadmin.login');
     }
     public function KNTloginSubmit(Request $request){
+        session()->forget('kntTaikhoan');
+        session()->forget('kntMatkhau');
+        session()->forget('kntStatus');
         $request->validate([
-            'kntTaikhoan'=>'required|exists:kntquantri',
+            'kntTaikhoan'=>'required',
             'kntMatkhau'=>'required'
         ]);
-
+        $KNTTaikhoan = KNTQuanTri::where('kntTaikhoan',$request->kntTaikhoan)->first();
         $data = $request -> only('kntTaikhoan', 'kntMatkhau');
-        $KNTTaikhoan = KNTQuanTri::where('kntTaikhoan',$data['kntTaikhoan'])->first();
-        if($data['kntMatkhau'] == $KNTTaikhoan['kntMatkhau']){
-            if($KNTTaikhoan->kntStatus == 0){
-                Session::put('KNTQuanTri', $KNTTaikhoan->kntTaikhoan);
-                return redirect()->route('KNTadmin.index');
-            }
-            else{
-                return redirect()->back()->withErrors(['message' => 'Tài khoản đã bị khóa!']);
-            }
-        }
 
-        return redirect()->back()->with(['message' => 'Mật khẩu không đúng!']);
+        if (!$KNTTaikhoan) {
+            return redirect()->back()->with(['kntTaikhoan' => 'Tài khoản không tồn tại!']);
+        }
+        if ($KNTTaikhoan->kntStatus != 0){
+            return redirect()->back()->with(['kntStatus' => 'Tài khoản đã bị khóa!']);
+        }
+        if ($request->kntMatkhau != $KNTTaikhoan->kntMatkhau){
+            return redirect()->back()->with(['kntMatkhau' => 'Mật khẩu không đúng!']);
+        }
+        Session::put('KNTQuanTri', $KNTTaikhoan->kntTaikhoan);
+        return redirect()->route('KNTadmin.index');
     }
     public function KNTlogout(){
         session()->forget('KNTQuanTri');

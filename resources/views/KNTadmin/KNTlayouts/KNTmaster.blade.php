@@ -1,8 +1,8 @@
-@include('KNTadmin.layouts.header')
+@include('KNTadmin.KNTlayouts.KNTheader')
 
 <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
     <div class="app-wrapper">
-        @include('KNTadmin.layouts.navbar')
+        @include('KNTadmin.KNTlayouts.KNTnavbar')
         <main class="app-main"> <!--begin::App Content Header-->
             <div class="app-content-header"> <!--begin::Container-->
                 <div class="container-fluid"> <!--begin::Row-->
@@ -10,8 +10,8 @@
                 </div>
             </div>
         </main>
-        @include('KNTadmin.layouts.footer')
+        @include('KNTadmin.KNTlayouts.KNTfooter')
     </div>
-    @include('KNTadmin.layouts.script')
+    @include('KNTadmin.KNTlayouts.KNTscript')
 </body>
 </html>

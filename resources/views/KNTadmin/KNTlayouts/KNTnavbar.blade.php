@@ -54,14 +54,6 @@
                         <p>Thêm mới khách hàng</p>
                     </a>
                 </li>
-                <li class="nav-header">HÓA ĐƠN</li>
-                <li class="nav-item"> <a href="{{ route('KNTadmin.KNTKhachhang.index') }}" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
-                        <p>Danh sách hóa đơn</p>
-                    </a> </li>
-                <li class="nav-item"> <a href="{{ route('KNTadmin.KNTKhachhang.create') }}" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
-                        <p>Thêm mới hóa đơn</p>
-                    </a>
-                </li>
             </ul> <!--end::Sidebar Menu-->
         </nav>
     </div> <!--end::Sidebar Wrapper-->
