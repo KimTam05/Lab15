@@ -21,17 +21,18 @@
                         <input type="text" class="form-control" placeholder="Tên tài khoản" name="kntTaikhoan">
                         <div class="input-group-text"> <span class="bi bi-envelope"></span> </div>
                     </div>
-                    @if (session('kntTaikhoan'))
-                        <div class="alert alert-danger">
-                            {{ session('kntTaikhoan') }}
-                        </div>
-                    @endif
                     <div class="input-group mb-3"> <input type="password" class="form-control" name="kntMatkhau" placeholder="Mật khẩu">
                         <div class="input-group-text"> <span class="bi bi-lock-fill"></span> </div>
                     </div>
                     @if (session('kntMatkhau'))
                         <div class="alert alert-danger">
                             {{ session('kntMatkhau') }}
+                        </div>
+                    @endif
+
+                    @if (session('kntTaikhoan'))
+                        <div class="alert alert-danger">
+                            {{ session('kntTaikhoan') }}
                         </div>
                     @endif
 

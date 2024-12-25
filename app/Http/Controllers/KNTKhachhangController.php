@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\KNTKhachhang;
+use App\Models\KNTGiohang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,7 +34,7 @@ class KNTKhachhangController extends Controller
     {
         $request->merge([
             'kntStatus' => $request->input('kntStatus', 0),
-            'kntNgayDangKy' => now(), // Gán giá trị ngày đăng ký
+            'kntNgayDangKy' => now(),
         ]);
 
         $request->validate([
@@ -65,6 +66,7 @@ class KNTKhachhangController extends Controller
     public function KNTupdate(Request $request, $KNTKhachhang)
     {
         $khachhang = KNTKhachhang::where('kntMaKH', $KNTKhachhang);
+        $KNTGiohang = KNTGiohang::where('kntMaKH', $KNTKhachhang);
 
         $request->validate([
             'kntMaKH'=>'required',
@@ -76,6 +78,7 @@ class KNTKhachhangController extends Controller
             'kntStatus'=>'required|in:0,1',
         ]);
         $khachhang->update($request->except('_token'));
+        $KNTGiohang->update($request->except('_token','kntMatkhau'));
         return redirect()->route('KNTadmin.KNTKhachhang.index');
     }
 

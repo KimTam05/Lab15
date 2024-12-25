@@ -5,7 +5,12 @@
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-header">
-                    <h3>Danh sách tài khoản khách hàng</h3>
+                    <h3 class="card-title">Danh sách tài khoản khách hàng</h3>
+                    <div class="card-tools">
+                        <div class="pagination pagination-sm float-end">
+                            <a href="{{ route('KNTadmin.KNTKhachhang.create') }}" class="btn btn-primary">Thêm mới</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered">
@@ -24,9 +29,9 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($KNTKhachhang as $item)
+                            @forelse ($KNTKhachhang as $key => $item)
                                 <tr>
-                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $KNTKhachhang->firstItem() + $key }}</td>
                                     <td>{{ $item->kntMaKH }}</td>
                                     <td>{{ $item->kntHoTenKH }}</td>
                                     <td>{{ $item->kntEmail }}</td>
@@ -53,7 +58,7 @@
                     </table>
                 </div>
                 <div class="card-footer">
-                    <a href="{{ route('KNTadmin.KNTKhachhang.create') }}" class="btn btn-primary">Thêm mới</a>
+                    <div class="pagination pagination-sm m-0 float-start">Trang {{ $KNTKhachhang->currentPage() }} trên tổng số {{ $KNTKhachhang->lastPage() }} trang.</div>
                     <ul class="pagination pagination-sm m-0 float-end">
                         <li class="page-item"> <a class="page-link" href="{{ $KNTKhachhang->previousPageUrl() }}">«</a> </li>
                         <li class="page-item"> <a class="page-link" href="{{ $KNTKhachhang->currentPage() }}">{{ $KNTKhachhang->currentPage() }}</a> </li>

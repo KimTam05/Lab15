@@ -18,24 +18,25 @@
     <div class="sidebar-wrapper">
         <nav class="mt-2"> <!--begin::Sidebar Menu-->
             <ul class="nav sidebar-menu flex-column" data-lte-toggle="treeview" role="menu" data-accordion="false">
+                <li class="nav-header">TRANG CHỦ</li>
                 <li class="nav-item"> <a href="{{ route('KNTadmin.index') }}" class="nav-link"> <i class="nav-icon bi bi-speedometer"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li class="nav-header">QUẢN TRỊ VIÊN</li>
-                <li class="nav-item"> <a href="{{ route('KNTadmin.KNTQuanTri.index') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i></i>
+                <li class="nav-item"> <a href="{{ route('KNTadmin.KNTQuanTri.index') }}" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i></i>
                         <p>Danh sách quản trị viên</p>
                     </a>
                 </li>
-                <li class="nav-item"> <a href="{{ route('KNTadmin.KNTQuanTri.create') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                <li class="nav-item"> <a href="{{ route('KNTadmin.KNTQuanTri.create') }}" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
                         <p>Thêm mới quản trị viên</p>
                     </a>
                 </li>
                 <li class="nav-header">LOẠI SẢN PHẨM</li>
-                <li class="nav-item"> <a href="{{ route('KNTadmin.KNTLoaiSP.index') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                <li class="nav-item"> <a href="{{ route('KNTadmin.KNTLoaiSP.index') }}" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
                         <p>Danh sách loại sản phẩm</p>
                     </a> </li>
-                <li class="nav-item"> <a href="{{ route('KNTadmin.KNTLoaiSP.create') }}" class="nav-link"> <i class="nav-icon bi bi-circle"></i>
+                <li class="nav-item"> <a href="{{ route('KNTadmin.KNTLoaiSP.create') }}" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
                         <p>Thêm mới loại sản phẩm</p>
                     </a> </li>
                 <li class="nav-header">SẢN PHẨM</li>
@@ -52,6 +53,14 @@
                     </a> </li>
                 <li class="nav-item"> <a href="{{ route('KNTadmin.KNTKhachhang.create') }}" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
                         <p>Thêm mới khách hàng</p>
+                    </a>
+                </li>
+                <li class="nav-header">GIỎ HÀNG</li>
+                <li class="nav-item"> <a href="{{ route('KNTadmin.KNTGiohang.index') }}" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
+                        <p>Danh sách giỏ hàng</p>
+                    </a> </li>
+                <li class="nav-item"> <a href="" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
+                        <p>Chi tiết giỏ hàng</p>
                     </a>
                 </li>
             </ul> <!--end::Sidebar Menu-->

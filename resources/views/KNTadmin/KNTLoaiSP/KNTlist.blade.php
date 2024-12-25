@@ -9,6 +9,11 @@
             @endif
             <div class="card-header">
                 <h3 class="card-title">Bảng danh sách loại sản phẩm</h3>
+                <div class="card-tools">
+                    <div class="pagination pagination-sm float-end">
+                        <a href="{{ route('KNTadmin.KNTLoaiSP.create') }}" class="btn btn-success">Thêm mới</a>
+                    </div>
+                </div>
             </div> <!-- /.card-header -->
             <div class="card-body">
                 <table class="table table-bordered">
@@ -40,14 +45,16 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="5">Không có dữ liệu</td>
+                                <td colspan="5" class="text-center">Không có dữ liệu</td>
                             </tr>
                         @endforelse
                     </tbody>
                 </table>
             </div> <!-- /.card-body -->
             <div class="card-footer clearfix">
-                <a href="{{ route('KNTadmin.KNTLoaiSP.create') }}" class="btn btn-success">Thêm mới</a>
+                <div class="pagination pagination-sm m-0 float-start">
+                    Trang {{ $KNTLoaiSP->currentPage() }} trên tổng số {{ $KNTLoaiSP->lastPage() }} trang.
+                </div>
                 <ul class="pagination pagination-sm m-0 float-end">
                     <li class="page-item"> <a class="page-link" href="{{ $KNTLoaiSP->previousPageUrl() }}">«</a> </li>
                     <li class="page-item"> <a class="page-link" href="{{ $KNTLoaiSP->currentPage() }}">{{ $KNTLoaiSP->currentPage() }}</a> </li>

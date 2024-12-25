@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('kntTenSP');
             $table->string('kntHinhAnh');
             $table->integer('kntSoLuong');
-            $table->float('kntDongia');
+            $table->decimal('kntDongia', 10);
             $table->string('kntMaLoai');
             $table->tinyInteger('kntStatus');
             $table->timestamps();

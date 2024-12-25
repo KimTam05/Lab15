@@ -7,6 +7,7 @@ use App\Http\Controllers\KNTSanphamController;
 use App\Http\Controllers\KNTKhachhangController;
 use App\Http\Controllers\KNTHoadonController;
 use App\Http\Controllers\KNTCTHoadonController;
+use App\Http\Controllers\KNTGiohangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,5 +59,8 @@ Route::group(['prefix' => 'knt-admin', 'middleware' => 'KNTadmin.auth'], functio
         Route::get('{kntMaKH}/edit', [KNTKhachhangController::class, 'KNTedit'])->name('KNTadmin.KNTKhachhang.edit');
         Route::post('{kntMaKH}/edit', [KNTKhachhangController::class, 'KNTupdate']);
         Route::delete('/{kntMaKH}/delete', [KNTKhachhangController::class, 'KNTdestroy'])->name('KNTadmin.KNTKhachhang.delete');
+    });
+    Route::group(['prefix' => 'knt-giohang'], function(){
+        Route::get('/', [KNTGiohangController::class,'KNTindex'])->name('KNTadmin.KNTGiohang.index');
     });
 });

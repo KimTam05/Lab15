@@ -13,7 +13,7 @@ class KNTQuanTriSeeder extends Seeder
      */
     public function run(): void
     {
-        $kntMatkhau = '123456@';
+        $kntMatkhau = '123456a@';
         DB::table("kntquantri")->insert([
             'kntTaikhoan'=> 'kimngoctam15@gmail.com',
             'kntMatkhau'=> $kntMatkhau,

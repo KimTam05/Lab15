@@ -11,19 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('knthoadon', function (Blueprint $table) {
+        Schema::create('kntgiohang', function (Blueprint $table) {
             $table->id();
-            $table->string('kntMaHD')->unique();
+            $table->string('kntMaGH')->unique();
             $table->string('kntMaKH');
-            $table->dateTime('kntNgayHoaDon');
-            $table->dateTime('kntNgayNhan');
             $table->string('kntHoTenKH');
             $table->string('kntEmail');
-            $table->string('kntDienThoai', 10);
-            $table->string('kntDiaChi');
-            $table->float('kntTongTriGia');
+            $table->string('kntDienthoai', 10);
+            $table->string('kntDiachi');
             $table->tinyInteger('kntStatus');
             $table->foreign('kntMaKH')->references('kntMaKH')->on('kntkhachhang');
+            $table->timestamps();
         });
     }
 
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('knthoadon');
+        Schema::dropIfExists('kntgiohang');
     }
 };

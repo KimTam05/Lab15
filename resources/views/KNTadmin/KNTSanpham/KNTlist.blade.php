@@ -6,6 +6,9 @@
         <div class="card mb-4">
             <div class="card-header">
                 <h3 class="card-title">Bảng danh sách sản phẩm</h3>
+                <div class="float-end">
+                    <a href="{{ route('KNTadmin.KNTSanpham.create') }}" class="btn btn-success">Thêm mới</a>
+                </div>
             </div> <!-- /.card-header -->
             <div class="card-body">
                 <table class="table table-bordered">
@@ -23,9 +26,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($KNTSanpham as $item)
+                        @forelse ($KNTSanpham as $key => $item)
                             <tr>
-                                <td>1</td>
+                                <td>{{ $KNTSanpham->firstItem() + $key }}</td>
                                 <td>{{ $item->kntMaSP }}</td>
                                 <td>{{ $item->kntTenSP }}</td>
                                 <td><img src="{{asset('storage/' . $item->kntHinhAnh)}}" style="width: 150px; height: 150px"></td>
@@ -45,19 +48,21 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="9">Không có dữ liệu</td>
+                                <td colspan="9" class="text-center">Không có dữ liệu</td>
                             </tr>
                         @endforelse
                     </tbody>
                 </table>
             </div> <!-- /.card-body -->
             <div class="card-footer clearfix">
-                <a href="{{ route('KNTadmin.KNTSanpham.create') }}" class="btn btn-success">Thêm mới</a>
-                {{-- <ul class="pagination pagination-sm m-0 float-end">
+                <div class="float-start">
+                    Trang {{ $KNTSanpham->currentPage() }} trên tổng số {{ $KNTSanpham->lastPage() }} trang.
+                </div>
+                <ul class="pagination pagination-sm m-0 float-end">
                     <li class="page-item"> <a class="page-link" href="{{ $KNTSanpham->previousPageUrl() }}">«</a> </li>
                     <li class="page-item"> <a class="page-link" href="{{ $KNTSanpham->currentPage() }}">{{ $KNTSanpham->currentPage() }}</a> </li>
                     <li class="page-item"> <a class="page-link" href="{{ $KNTSanpham->nextPageUrl() }}">»</a> </li>
-                </ul> --}}
+                </ul>
             </div>
         </div>
     </div>

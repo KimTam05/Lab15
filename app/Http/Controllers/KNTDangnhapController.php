@@ -25,9 +25,6 @@ class KNTDangnhapController extends Controller
         return view('KNTadmin.login');
     }
     public function KNTloginSubmit(Request $request){
-        session()->forget('kntTaikhoan');
-        session()->forget('kntMatkhau');
-        session()->forget('kntStatus');
         $request->validate([
             'kntTaikhoan'=>'required',
             'kntMatkhau'=>'required'

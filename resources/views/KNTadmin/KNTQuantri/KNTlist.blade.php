@@ -6,6 +6,11 @@
         <div class="card mb-4">
             <div class="card-header">
                 <h3 class="card-title">Bảng danh sách tài khoản quản trị viên</h3>
+                <div class="card-tools">
+                    <div class="pagination pagination-sm float-end">
+                        <a href="{{ route('KNTadmin.KNTQuanTri.create') }}" class="btn btn-success">Thêm mới</a>
+                    </div>
+                </div>
             </div> <!-- /.card-header -->
             <div class="card-body">
                 <table class="table table-bordered">
@@ -36,14 +41,16 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="5">Không có dữ liệu</td>
+                                <td colspan="5" class="text-center">Không có dữ liệu</td>
                             </tr>
                         @endforelse
                     </tbody>
                 </table>
             </div> <!-- /.card-body -->
             <div class="card-footer clearfix">
-                <a href="{{ route('KNTadmin.KNTQuanTri.create') }}" class="btn btn-success">Thêm mới</a>
+                <div class="pagination pagination-sm m-0 float-start">
+                    Trang {{ $KNTQuanTri->currentPage() }} trên tổng số {{ $KNTQuanTri->lastPage() }} trang.
+                </div>
                 <ul class="pagination pagination-sm m-0 float-end">
                     <li class="page-item"> <a class="page-link" href="{{ $KNTQuanTri->previousPageUrl() }}">«</a> </li>
                     <li class="page-item"> <a class="page-link" href="{{ $KNTQuanTri->currentPage() }}">{{ $KNTQuanTri->currentPage() }}</a> </li>
