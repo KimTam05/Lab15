@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('kntctgiohang', function (Blueprint $table) {
             $table->id();
-            $table->string('kntMaGH');
-            $table->string('kntMaSP');
+            $table->string('kntMaGH')->unique();
+            $table->string('kntMaSP')->unique();
             $table->integer('kntSLMua');
             $table->float('kntDonGia');
             $table->float('kntThanhTien');

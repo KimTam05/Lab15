@@ -59,7 +59,7 @@
                 <li class="nav-item"> <a href="{{ route('KNTadmin.KNTGiohang.index') }}" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
                         <p>Danh sách giỏ hàng</p>
                     </a> </li>
-                <li class="nav-item"> <a href="" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
+                <li class="nav-item"> <a href="{{ route('KNTadmin.KNTCTGiohang.index') }}" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
                         <p>Chi tiết giỏ hàng</p>
                     </a>
                 </li>

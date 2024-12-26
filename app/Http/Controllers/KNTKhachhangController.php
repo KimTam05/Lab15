@@ -65,8 +65,8 @@ class KNTKhachhangController extends Controller
      */
     public function KNTupdate(Request $request, $KNTKhachhang)
     {
-        $khachhang = KNTKhachhang::where('kntMaKH', $KNTKhachhang);
-        $KNTGiohang = KNTGiohang::where('kntMaKH', $KNTKhachhang);
+        $khachhang = KNTKhachhang::where('kntMaKH', $KNTKhachhang)->first();
+        $KNTGiohang = KNTGiohang::where('kntMaKH', $KNTKhachhang)->first();
 
         $request->validate([
             'kntMaKH'=>'required',

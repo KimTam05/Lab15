@@ -32,12 +32,12 @@
                                 <td>{{ $item->kntEmail }}</td>
                                 <td>{{ $item->kntDienthoai }}</td>
                                 <td>{{ $item->kntDiachi }}</td>
-                                <td><a href="" class="text-decoration-none">Chi tiết</a></td>
+                                <td><a href="{{ route('KNTadmin.KNTCTGiohang.show', ['kntctgiohang' => $item->kntMaGH]) }}" class="text-decoration-none">Chi tiết</a></td>
                                 <td>
                                     @if ($item->kntStatus == 0)
-                                        Chưa có sản phẩm
+                                        Đang hoạt động
                                     @else
-                                        Chưa thanh toán
+                                        Đã khóa
                                     @endif
                                 </td>
                             </tr>

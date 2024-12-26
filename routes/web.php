@@ -8,6 +8,7 @@ use App\Http\Controllers\KNTKhachhangController;
 use App\Http\Controllers\KNTHoadonController;
 use App\Http\Controllers\KNTCTHoadonController;
 use App\Http\Controllers\KNTGiohangController;
+use App\Http\Controllers\KNTCTGiohangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -62,5 +63,11 @@ Route::group(['prefix' => 'knt-admin', 'middleware' => 'KNTadmin.auth'], functio
     });
     Route::group(['prefix' => 'knt-giohang'], function(){
         Route::get('/', [KNTGiohangController::class,'KNTindex'])->name('KNTadmin.KNTGiohang.index');
+        Route::get('/knt-ctgiohang', [KNTCTGiohangController::class, 'KNTindex'])->name('KNTadmin.KNTCTGiohang.index');
+        Route::get('/kntctgiohang/create', [KNTCTGiohangController::class, 'KNTcreate'])->name('KNTadmin.KNTCTGiohang.create');
+        Route::post('/kntctgiohang/create', [KNTCTGiohangController::class, 'KNTstore'])->name('KNTadmin.KNTCTGiohang.store');
+        Route::get('/knt-ctgiohang/{kntctgiohang}', [KNTCTGiohangController::class, 'KNTshow'])->name('KNTadmin.KNTCTGiohang.show');
+        Route::get('/knt-ctgiohang/{kntctgiohang}/create', [KNTCTGiohangController::class, 'KNTcreateID'])->name('KNTadmin.KNTCTGiohang.createID');
+        Route::post('/knt-ctgiohang/{kntctgiohang}/create', [KNTCTGiohangController::class, 'KNTstoreID'])->name('KNTadmin.KNTCTGiohang.storeID');
     });
 });
