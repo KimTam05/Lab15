@@ -30,13 +30,21 @@ class KNTLoaiSPController extends Controller
     public function KNTstore(Request $request)
     {
         $request->validate([
-            'kntMaLoai'=>'required|unique:KNTLoaisanpham,kntMaLoai',
+            'kntMaLoai'=>'required',
             'kntTenLoai'=>'required',
             'kntStatus'=>'required|in:0,1',
+        ],[
+            'kntMaLoai.required'=>'Vui lòng nhập mã loại sản phẩm',
+            'kntTenLoai.required'=>'Vui lòng nhập tên loại sản phẩm',
+            'kntStatus.required'=>'Vui lòng chọn trạng thái',
         ]);
+        $KNTLoaiSP = KNTLoaiSP::where('kntMaLoai', $request->kntMaLoai)->first();
+        if($KNTLoaiSP){
+            return redirect()->back()->with('error', 'Mã loại sản phẩm đã tồn tại!');
+        }
         $data = $request->only('kntMaLoai', 'kntTenLoai', 'kntStatus');
         KNTLoaiSP::create($data);
-        return redirect()->route('KNTadmin.KNTLoaiSP.index');
+        return redirect()->route('KNTadmin.KNTLoaiSP.index')->with('success', 'Thêm loại sản phẩm thành công!');
     }
 
     /**
@@ -65,10 +73,13 @@ class KNTLoaiSPController extends Controller
         $request->validate([
             'kntTenLoai'=>'required',
             'kntStatus'=>'required|in:0,1',
+        ],[
+            'kntTenLoai.required'=>'Vui lòng nhập tên loại sản phẩm',
+            'kntStatus.required'=>'Vui lòng chọn trạng thái',
         ]);
         $data = $request->except('_token');
         KNTLoaiSP::where('kntMaLoai', $KNTLoaiSP)->update($data);
-        return redirect('/knt-admin/knt-loaisp')->with('message', 'Sửa thành công!');
+        return redirect('/knt-admin/knt-loaisp')->with('success', 'Sửa loại sản phẩm thành công!');
     }
 
     /**
@@ -77,6 +88,6 @@ class KNTLoaiSPController extends Controller
     public function KNTdestroy($KNTLoaiSP)
     {
         KNTLoaiSP::where('kntMaLoai', $KNTLoaiSP)->delete();
-        return redirect('knt-admin/knt-loaisp')->with(['message'=>'Xóa thành công']);
+        return redirect('knt-admin/knt-loaisp')->with('success','Xóa loại sản phẩm thành công!');
     }
 }

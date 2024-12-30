@@ -19,10 +19,11 @@ return new class extends Migration
             $table->dateTime('kntNgayNhan');
             $table->string('kntHoTenKH');
             $table->string('kntEmail');
-            $table->string('kntDienThoai', 10);
-            $table->string('kntDiaChi');
-            $table->float('kntTongTriGia');
+            $table->string('kntDienthoai', 10);
+            $table->string('kntDiachi');
+            $table->decimal('kntTongtien', 10);
             $table->tinyInteger('kntStatus');
+            $table->timestamps();
             $table->foreign('kntMaKH')->references('kntMaKH')->on('kntkhachhang');
         });
     }

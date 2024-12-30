@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\KNTLoaiSP;
 use App\Models\KNTKhachhang;
 use App\Models\KNTSanpham;
-use Illuminate\Http\Request;
 use App\Models\KNTQuanTri;
+use Illuminate\Http\Request;
+use App\Models\KNTHoadon;
 use Illuminate\Support\Facades\Session;
 
 
@@ -15,11 +16,11 @@ class KNTDangnhapController extends Controller
     // KNTQuanTri Account
     public function KNTindex(){
 
-        $KNTQuantri_count = KNTQuanTri::count();
+        $KNTHoadon_count = KNTHoadon::count();
         $KNTLoaiSP_count = KNTLoaiSP::count();
         $KNTSanpham_count = KNTSanpham::count();
         $KNTKhachhang_count = KNTKhachhang::count();
-        return view('KNTadmin.index', ['KNTQuantri_count' => $KNTQuantri_count, 'KNTLoaiSP_count' => $KNTLoaiSP_count, 'KNTSanpham_count' => $KNTSanpham_count, 'KNTKhachhang_count' => $KNTKhachhang_count]);
+        return view('KNTadmin.index', ['KNTHoadon_count' => $KNTHoadon_count, 'KNTLoaiSP_count' => $KNTLoaiSP_count, 'KNTSanpham_count' => $KNTSanpham_count, 'KNTKhachhang_count' => $KNTKhachhang_count]);
     }
     public function KNTlogin(){
         return view('KNTadmin.login');

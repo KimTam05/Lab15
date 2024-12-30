@@ -38,17 +38,27 @@ class KNTKhachhangController extends Controller
         ]);
 
         $request->validate([
-            'kntMaKH'=>'required',
+            'kntMaKH'=>'required|unique:kntkhachhang,kntMaKH',
             'kntHoTenKH'=>'required',
             'kntEmail'=>'required|unique:kntkhachhang,kntEmail',
             'kntMatkhau'=>'required|min:6',
             'kntDienthoai'=> 'required',
             'kntDiachi'=>'required',
             'kntStatus'=>'required|in:0,1',
+        ],[
+            'kntMaKH.required'=>'Mã khách hàng không được để trống',
+            'kntHoTenKH.required' => 'Họ tên không được để trống',
+            'kntEmail.required' => 'Email không được để trống',
+            'kntMatkhau.required' => 'Mật khẩu không được để trống',
+            'kntDienthoai.required' => 'Số điện thoại không được để trống',
+            'kntDiachi.required' => 'Địa chỉ không được để trống',
+            'kntMaKH.unique' => 'Mã khách hàng đã tồn tại',
+            'kntEmail.unique' => 'Email đã tồn tại',
         ]);
+        $KNTKhachhang = KNTKhachhang::where('kntMaKH', $request->kntMaKH)->first();
         $data = $request->except('_token');
         KNTKhachhang::create($data);
-        return redirect()->route('KNTadmin.KNTKhachhang.index');
+        return redirect()->route('KNTadmin.KNTKhachhang.index')->with('success','Thêm khách hàng thành công!');
     }
 
     /**
@@ -69,17 +79,24 @@ class KNTKhachhangController extends Controller
         $KNTGiohang = KNTGiohang::where('kntMaKH', $KNTKhachhang)->first();
 
         $request->validate([
-            'kntMaKH'=>'required',
             'kntHoTenKH'=>'required',
             'kntEmail'=>'required|unique:kntkhachhang,kntEmail,'.$KNTKhachhang.',kntMaKH',
             'kntMatkhau'=>'required|min:6',
             'kntDienthoai'=> 'required',
             'kntDiachi'=>'required',
             'kntStatus'=>'required|in:0,1',
+        ],[
+            'kntHoTenKH.required' => 'Họ tên không được để trống',
+            'kntEmail.required' => 'Email không được để trống',
+            'kntMatkhau.required' => 'Mật khẩu không được để trống',
+            'kntDienthoai.required' => 'Số điện thoại không được để trống',
+            'kntDiachi.required' => 'Địa chỉ không được để trống',
+            'kntMaKH.unique' => 'Mã khách hàng đã tồn tại',
+            'kntEmail.unique' => 'Email đã tồn tại',
         ]);
         $khachhang->update($request->except('_token'));
         $KNTGiohang->update($request->except('_token','kntMatkhau'));
-        return redirect()->route('KNTadmin.KNTKhachhang.index');
+        return redirect()->route('KNTadmin.KNTKhachhang.index')->with('success', 'Sửa thông tin khách hàng thành công!');
     }
 
     /**
@@ -87,7 +104,8 @@ class KNTKhachhangController extends Controller
      */
     public function KNTdestroy($KNTKhachhang)
     {
+        KNTGiohang::where('kntMaKH', $KNTKhachhang)->delete();
         KNTKhachhang::where('kntMaKH', $KNTKhachhang)->delete();
-        return redirect()->route('KNTadmin.KNTKhachhang.index');
+        return redirect()->route('KNTadmin.KNTKhachhang.index')->with('success', 'Xóa thông tin khách hàng thành công!');
     }
 }

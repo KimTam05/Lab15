@@ -3,10 +3,12 @@
 @section('content')
 <div class="container my-3">
     <div class="col-md-12">
+        @if (session('success'))
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
+            </div>
+        @endif
         <div class="card mb-4">
-            @if (isset($message))
-                <h3>{{ $message }}</h3>
-            @endif
             <div class="card-header">
                 <h3 class="card-title">Bảng danh sách loại sản phẩm</h3>
                 <div class="card-tools">

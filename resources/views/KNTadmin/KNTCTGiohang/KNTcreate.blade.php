@@ -42,6 +42,11 @@
                 <input type="submit" value="Tạo mới" class="btn btn-primary my-2">
                 <a href="{{ route('KNTadmin.KNTCTGiohang.index') }}" class="btn btn-outline-secondary">Hủy</a>
             </form>
+            @if (session('error'))
+                <div class="alert alert-danger" role="alert">
+                    {{ session('error') }}
+                </div>
+            @endif
         </div>
         <div class="col-sm-3"></div>
     </div>

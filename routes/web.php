@@ -9,6 +9,7 @@ use App\Http\Controllers\KNTHoadonController;
 use App\Http\Controllers\KNTCTHoadonController;
 use App\Http\Controllers\KNTGiohangController;
 use App\Http\Controllers\KNTCTGiohangController;
+use App\Http\Controllers\KNTUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,14 +37,6 @@ Route::group(['prefix' => 'knt-admin', 'middleware' => 'KNTadmin.auth'], functio
         Route::post('/{kntMaLoai}/edit', [KNTLoaiSPController::class, 'KNTupdate']);
         Route::delete('/{kntMaLoai}/delete',[KNTLoaiSPController::class, 'KNTdestroy'])->name('KNTadmin.KNTLoaiSP.delete');
     });
-    Route::group(['prefix' => 'knt-quantri'], function(){
-        Route::get('/', [KNTQuanTriController::class,'KNTindex'])->name('KNTadmin.KNTQuanTri.index');
-        Route::get('/create', [KNTQuanTriController::class,'KNTcreate'])->name('KNTadmin.KNTQuanTri.create');
-        Route::post('/create', [KNTQuanTriController::class, 'KNTstore']);
-        Route::get('{id}/edit', [KNTQuanTriController::class, 'KNTedit'])->name('KNTadmin.KNTQuanTri.edit');
-        Route::post('{id}/edit', [KNTQuanTriController::class, 'KNTupdate']);
-        Route::delete('/{id}/delete', [KNTQuanTriController::class, 'KNTdestroy'])->name('KNTadmin.KNTQuanTri.delete');
-    });
     Route::group(['prefix' => 'knt-sanpham'], function(){
         Route::get('/', [KNTSanphamController::class,'KNTindex'])->name('KNTadmin.KNTSanpham.index');
         Route::get('/create', [KNTSanphamController::class,'KNTcreate'])->name('KNTadmin.KNTSanpham.create');
@@ -63,11 +56,26 @@ Route::group(['prefix' => 'knt-admin', 'middleware' => 'KNTadmin.auth'], functio
     });
     Route::group(['prefix' => 'knt-giohang'], function(){
         Route::get('/', [KNTGiohangController::class,'KNTindex'])->name('KNTadmin.KNTGiohang.index');
-        Route::get('/knt-ctgiohang', [KNTCTGiohangController::class, 'KNTindex'])->name('KNTadmin.KNTCTGiohang.index');
-        Route::get('/kntctgiohang/create', [KNTCTGiohangController::class, 'KNTcreate'])->name('KNTadmin.KNTCTGiohang.create');
-        Route::post('/kntctgiohang/create', [KNTCTGiohangController::class, 'KNTstore'])->name('KNTadmin.KNTCTGiohang.store');
-        Route::get('/knt-ctgiohang/{kntctgiohang}', [KNTCTGiohangController::class, 'KNTshow'])->name('KNTadmin.KNTCTGiohang.show');
-        Route::get('/knt-ctgiohang/{kntctgiohang}/create', [KNTCTGiohangController::class, 'KNTcreateID'])->name('KNTadmin.KNTCTGiohang.createID');
-        Route::post('/knt-ctgiohang/{kntctgiohang}/create', [KNTCTGiohangController::class, 'KNTstoreID'])->name('KNTadmin.KNTCTGiohang.storeID');
+        Route::group(['prefix' => 'knt-ctgiohang'], function(){
+            Route::get('/', [KNTCTGiohangController::class, 'KNTindex'])->name('KNTadmin.KNTCTGiohang.index');
+            Route::get('/create', [KNTCTGiohangController::class, 'KNTcreate'])->name('KNTadmin.KNTCTGiohang.create');
+            Route::post('/create', [KNTCTGiohangController::class, 'KNTstore'])->name('KNTadmin.KNTCTGiohang.store');
+            Route::get('/{kntctgiohang}', [KNTCTGiohangController::class, 'KNTshow'])->name('KNTadmin.KNTCTGiohang.show');
+            Route::get('/{kntctgiohang}/create', [KNTCTGiohangController::class, 'KNTcreateID'])->name('KNTadmin.KNTCTGiohang.createID');
+            Route::post('/{kntctgiohang}/create', [KNTCTGiohangController::class, 'KNTstoreID'])->name('KNTadmin.KNTCTGiohang.storeID');
+            Route::get('/{kntmagh}/{kntmasp}/upload', [KNTCTGiohangController::class, 'KNTupload'])->name('KNTadmin.KNTCTGiohang.upload');
+            Route::get('/{kntmagh}/{kntmasp}/edit', [KNTCTGiohangController::class,'KNTedit'])->name('KNTadmin.KNTCTGiohang.KNTedit');
+            Route::post('/{kntmagh}/{kntmasp}/edit', [KNTCTGiohangController::class,'KNTupdate']);
+            Route::delete('/{kntmagh}/{kntmasp}/delete',[KNTCTGiohangController::class, 'KNTdestroy'])->name('KNTadmin.KNTCTGiohang.KNTdelete');
+            Route::delete('/{kntmagh}/{kntmasp}/delete-id',[KNTCTGiohangController::class, 'KNTdestroyID'])->name('KNTadmin.KNTCTGiohang.KNTdeleteID');
+        });
+    });
+    Route::group(['prefix' => 'knt-hoadon'], function(){
+        Route::get('/', [KNTHoadonController::class,'KNTindex'])->name('KNTadmin.KNTHoadon.index');
+        Route::get('/{knthoadon}', [KNTHoadonController::class,'KNTshow'])->name('KNTadmin.KNTHoadon.show');
+        Route::delete('/{knthoadon}/delete', [KNTHoadonController::class,'KNTdelete'])->name('KNTadmin.KNTHoadon.KNTdelete');
     });
 });
+
+Route::get('/', [KNTUserController::class, 'KNTindex'])->name('KNTuser.index');
+Route::get('/about', [KNTUserController::class,'KNTabout'])->name('KNTuser.about');

@@ -71,6 +71,9 @@
                 </div>
                 <input type="submit" value="Tạo sản phẩm" class="btn btn-primary my-2">
                 <a href="{{ route('KNTadmin.KNTSanpham.index') }}" class="btn btn-outline-secondary">Hủy</a>
+                @if (session('error'))
+                    {{ session('error') }}
+                @endif
             </form>
         </div>
         <div class="col-sm-3"></div>

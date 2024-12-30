@@ -9,5 +9,9 @@ class KNTHoadon extends Model
 {
     use HasFactory;
     protected $table = 'knthoadon';
-    protected $fillable = ['kntMaHD', 'kntMaKH', 'kntNgayNhan', 'kntHoTenKH', 'kntEmail', 'kntDienThoai', 'kntDiaChi', 'kntTongTriGia'];
+    protected $fillable = ['kntMaHD', 'kntMaKH', 'kntNgayHoaDon', 'kntNgayNhan', 'kntHoTenKH', 'kntEmail', 'kntDienthoai', 'kntDiachi', 'kntTongtien', 'kntStatus'];
+    public function kntkhachhang()
+    {
+        return $this->belongsTo(KNTKhachhang::class, 'kntMaKH');
+    }
 }

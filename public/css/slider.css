@@ -1,0 +1,93 @@
+.banner{
+    position: relative;
+}
+.banner .banner-item{
+    position: relative;
+}
+
+.banner .banner-item img{
+    width: 100%;
+    height: 50%;
+}
+
+.banner .banner-item>p{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.5); /* Nền mờ */
+    color: #fff;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.product-slider .product-item .product-image img{
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+.product-slider{
+    display: flex;
+    align-items: center;
+    padding-bottom: 50px;
+
+}
+
+.product-slider .product-item{
+    margin: 0 10px;
+}
+
+.slick-prev{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    z-index: 2;
+    left: 0;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #ccc;
+    transition: all ease-in-out 0.2s;
+}
+.slick-prev:hover{
+    background-color: greenyellow;
+}
+.slick-next{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    right: 0;
+    z-index: 2;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #ccc;
+    transition: all ease-in-out 0.2s;
+}
+.slick-next:hover{
+    background-color: greenyellow;
+}
+.slick-dots{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: flex !important;
+    list-style-type: none !important;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+.slick-dots button{
+    font-size: 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 100rem;
+    background-color: #eee;
+    border: none;
+    outline: none;
+}
+
+.slick-dots .slick-active button{
+    background-color: greenyellow;
+}

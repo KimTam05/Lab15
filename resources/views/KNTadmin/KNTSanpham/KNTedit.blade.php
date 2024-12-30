@@ -6,7 +6,7 @@
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
             <h1>Sửa sản phẩm</h1>
-            <form action="" method="post" enctype="multi-part/form-data">
+            <form action="" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group my-2">
                     <label for="">Mã sản phẩm</label>
@@ -68,7 +68,7 @@
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
-                <input type="submit" value="Tạo sản phẩm" class="btn btn-primary my-2">
+                <input type="submit" value="Sửa" class="btn btn-primary my-2">
                 <a href="{{ route('KNTadmin.KNTSanpham.index') }}" class="btn btn-outline-secondary">Hủy</a>
             </form>
         </div>

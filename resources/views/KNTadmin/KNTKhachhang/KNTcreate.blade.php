@@ -50,9 +50,14 @@
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
                 </div>
-                <input type="submit" value="Tạo danh mục" class="btn btn-primary my-2">
+                <input type="submit" value="Tạo" class="btn btn-primary my-2">
                 <a href="{{ route('KNTadmin.KNTKhachhang.index') }}" class="btn btn-outline-secondary">Hủy</a>
             </form>
+            @if (session('error'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('error') }}
+            </div>
+        @endif
         </div>
         <div class="col-sm-3"></div>
     </div>

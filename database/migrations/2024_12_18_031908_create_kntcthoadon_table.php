@@ -13,15 +13,14 @@ return new class extends Migration
     {
         Schema::create('kntcthoadon', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('kntHoaDonID')->unsigned();
-            $table->bigInteger('kntSanPhamID')->unsigned();
+            $table->string('kntMaHD');
+            $table->string('kntMaSP');
             $table->integer('kntSLMua');
-            $table->float('kntDonGia');
-            $table->float('kntThanhTien');
-            $table->tinyInteger('kntStatus');
+            $table->decimal('kntDonGia', 10);
+            $table->decimal('kntThanhTien', 10);
             $table->timestamps();
-            $table->foreign('kntHoaDonID')->references('id')->on('knthoadon');
-            $table->foreign('kntSanPhamID')->references('id')->on('kntsanpham');
+            $table->foreign('kntMaHD')->references('kntMaHD')->on('knthoadon');
+            $table->foreign('kntMaSP')->references('kntMaSP')->on('kntsanpham');
         });
     }
 

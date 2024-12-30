@@ -3,6 +3,11 @@
 @section('content')
 <div class="container my-3">
     <div class="col-md-12">
+        @if (session('success'))
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
+            </div>
+        @endif
         <div class="card mb-4">
             <div class="card-header">
                 <h3 class="card-title">Bảng danh sách chi tiết giỏ hàng của {{ $KNTGiohang->kntHoTenKH }}</h3>
@@ -32,9 +37,13 @@
                                 <td>{{ $item->kntSLMua }}</td>
                                 <td>{{ $item->kntDonGia }}</td>
                                 <td>{{ $item->kntThanhTien }}</td>
-                                <td>
-                                    <form action="" method="post">
-                                        {{-- <a href="{{ route('KNTadmin.KNTCTGiohang.edit') }}" class="btn btn-outline-primary"></a> --}}
+                                <td class="text-center">
+                                    <form action="{{ route('KNTadmin.KNTCTGiohang.KNTdeleteID',['kntmagh'=>$item->kntMaGH, 'kntmasp'=>$item->kntMaSP]) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <a href="{{ route('KNTadmin.KNTCTGiohang.KNTedit',['kntmagh'=>$item->kntMaGH, 'kntmasp'=>$item->kntMaSP]) }}" class="btn btn-outline-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                        <a href="{{ route('KNTadmin.KNTCTGiohang.upload',['kntmagh'=>$item->kntMaGH, 'kntmasp'=>$item->kntMaSP]) }}" class="btn btn-outline-success"><i class="fa-solid fa-upload"></i></a>
+                                        <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này không?')"><i class="fa-solid fa-trash"></i></button>
                                     </form>
                                 </td>
                             </tr>

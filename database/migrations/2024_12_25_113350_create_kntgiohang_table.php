@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('kntEmail');
             $table->string('kntDienthoai', 10);
             $table->string('kntDiachi');
+            $table->decimal('kntTongtien', 10)->default('0');
             $table->tinyInteger('kntStatus');
             $table->foreign('kntMaKH')->references('kntMaKH')->on('kntkhachhang');
             $table->timestamps();

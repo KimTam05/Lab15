@@ -23,15 +23,6 @@
                         <p>Dashboard</p>
                     </a>
                 </li>
-                <li class="nav-header">QUẢN TRỊ VIÊN</li>
-                <li class="nav-item"> <a href="{{ route('KNTadmin.KNTQuanTri.index') }}" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i></i>
-                        <p>Danh sách quản trị viên</p>
-                    </a>
-                </li>
-                <li class="nav-item"> <a href="{{ route('KNTadmin.KNTQuanTri.create') }}" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
-                        <p>Thêm mới quản trị viên</p>
-                    </a>
-                </li>
                 <li class="nav-header">LOẠI SẢN PHẨM</li>
                 <li class="nav-item"> <a href="{{ route('KNTadmin.KNTLoaiSP.index') }}" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
                         <p>Danh sách loại sản phẩm</p>
@@ -63,6 +54,14 @@
                         <p>Chi tiết giỏ hàng</p>
                     </a>
                 </li>
+                <li class="nav-header">HÓA ĐƠN</li>
+                <li class="nav-item"> <a href="{{ route('KNTadmin.KNTHoadon.index') }}" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
+                        <p>Danh sách hóa đơn</p>
+                    </a> </li>
+                {{-- <li class="nav-item"> <a href="{{ route('KNTadmin.KNTHoadon.index') }}" class="nav-link"> <i class="nav-icon bi bi-circle-fill"></i>
+                        <p>thêm mới hóa đơn</p>
+                    </a>
+                </li> --}}
             </ul> <!--end::Sidebar Menu-->
         </nav>
     </div> <!--end::Sidebar Wrapper-->

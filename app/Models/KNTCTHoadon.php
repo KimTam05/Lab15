@@ -9,5 +9,5 @@ class KNTCTHoadon extends Model
 {
     use HasFactory;
     protected $table = 'kntcthoadon';
-    protected $fillable = ['kntHoaDonID', 'kntSanPhamID', 'kntSLMua', 'kntDonGiaMua', 'kntThanhTien', 'kntStatus'];
+    protected $fillable = ['kntMaHD', 'kntMaSP', 'kntSLMua', 'kntDonGia', 'kntThanhTien', 'kntStatus'];
 }

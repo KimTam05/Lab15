@@ -10,14 +10,10 @@ class KNTGioHang extends Model
     use HasFactory;
 
     protected $table = 'kntgiohang';
-    protected $fillable = ['kntMaKH', 'kntMaGH', 'kntHoTenKH','kntEmail', 'kntDienThoai', 'kntDiaChi', 'kntStatus'];
+    protected $fillable = ['kntMaKH', 'kntMaGH', 'kntHoTenKH','kntEmail', 'kntDienThoai', 'kntDiaChi', 'kntTongtien', 'kntStatus'];
 
     public function kntkhachhang()
     {
         return $this->belongsTo(KNTKhachhang::class, 'kntMaKH');
-    }
-    public function knttonggia()
-    {
-        return $this->kntSoluong * $this->kntDongia;
     }
 }

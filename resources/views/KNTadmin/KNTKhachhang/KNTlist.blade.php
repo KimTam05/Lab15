@@ -3,6 +3,11 @@
 @section('content')
     <div class="container">
         <div class="col-12">
+            @if (session('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="card mb-4">
                 <div class="card-header">
                     <h3 class="card-title">Danh sách tài khoản khách hàng</h3>
@@ -51,7 +56,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="10" class="text-center">Không có dữ liệu</td>
+                                    <td colspan="11" class="text-center">Không có dữ liệu</td>
                                 </tr>
                             @endforelse
                         </tbody>

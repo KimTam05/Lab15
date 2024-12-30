@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('kntctgiohang', function (Blueprint $table) {
             $table->id();
-            $table->string('kntMaGH')->unique();
-            $table->string('kntMaSP')->unique();
+            $table->string('kntMaGH');
+            $table->string('kntMaSP');
             $table->integer('kntSLMua');
-            $table->float('kntDonGia');
-            $table->float('kntThanhTien');
+            $table->decimal('kntDonGia', 10);
+            $table->decimal('kntThanhTien', 10);
             $table->timestamps();
             $table->foreign('kntMaGH')->references('kntMaGH')->on('kntgiohang');
             $table->foreign('kntMaSP')->references('kntMaSP')->on('kntsanpham');
