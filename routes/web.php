@@ -78,4 +78,15 @@ Route::group(['prefix' => 'knt-admin', 'middleware' => 'KNTadmin.auth'], functio
 });
 
 Route::get('/', [KNTUserController::class, 'KNTindex'])->name('KNTuser.index');
+Route::get('/login', [KNTUserController::class, 'KNTlogin'])->name('KNTuser.login');
+Route::post('/login', [KNTUserController::class, 'KNTloginSubmit']);
+Route::get('/register', [KNTUserController::class, 'KNTregister'])->name('KNTuser.register');
+Route::post('/register', [KNTUserController::class, 'KNTregisterSubmit']);
 Route::get('/about', [KNTUserController::class,'KNTabout'])->name('KNTuser.about');
+Route::get('/logout', [KNTUserController::class,'KNTlogout'])->name('KNTuser.logout');
+Route::get('/user/{id}', [KNTUserController::class,'KNTuserindex'])->name('KNTuser.user');
+Route::get('/cart/{id}', [KNTUserController::class, 'KNTcart'])->name('KNTuser.cart');
+Route::get('/product', [KNTUserController::class,'KNTlist'])->name('KNTuser.list');
+Route::get('/product/{id}', [KNTUserController::class,'KNTshow'])->name('KNTuser.show');
+Route::post('/product/{id}', [KNTUserController::class,'KNTaddcart'])->name('KNTuser.addcart');
+Route::post('/user/{id}', [KNTUserController::class,'KNTuserupdate'])->name('KNTuser.userupdate');

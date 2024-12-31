@@ -113,7 +113,7 @@ class KNTCTGiohangController extends Controller
     {
         $KNTCTGiohang = KNTCTGiohang::where('kntMaGH', $KNTCTMaGH)->where('kntMaSP', $KNTCTMaSP)->first();
         $KNTGiohang = KNTGiohang::where('kntMaGH', $KNTCTMaGH)->first();
-        $KNTSanpham = KNTSanpham::where('kntMaSP', $KNTCTMaSP)->first();
+        $KNTSanpham_old = KNTSanpham::where('kntMaSP', $KNTCTMaSP)->first();
         $request->validate([
             'kntMaGH' => 'required',
             'kntMaSP' => 'required',
@@ -123,12 +123,13 @@ class KNTCTGiohangController extends Controller
             'kntMaSP.required' => 'Vui lòng nhập mã sản phẩm',
             'kntSLMua.required' => 'Vui lòng nhập số lượng mua',
         ]);
+        $KNTSanpham_new = KNTSanpham::where('kntMaSP', $request->kntMaSP)->first();
         $data = $request->except('_token');
         $KNTSLMua_old = $KNTCTGiohang->kntSLMua;
         $data['kntMaGH'] = $KNTGiohang->kntMaGH;
-        $data['kntDonGia'] = $KNTSanpham['kntDongia'];
+        $data['kntDonGia'] = $KNTSanpham_new['kntDongia'];
         $data['kntThanhTien'] = $data['kntDonGia'] * $data['kntSLMua'];
-        $KNTTongtien = $KNTGiohang->kntTongtien - ($KNTSanpham->kntDongia * $KNTSLMua_old) + $data['kntThanhTien'];
+        $KNTTongtien = $KNTGiohang->kntTongtien - ($KNTSanpham_old->kntDongia * $KNTSLMua_old) + $data['kntThanhTien'];
         $KNTGiohang->update(['kntTongtien' => $KNTTongtien]);
         $KNTCTGiohang->update($data);
         return redirect()->route('KNTadmin.KNTCTGiohang.index', ['kntctgiohang' => $KNTGiohang->kntMaGH])->with('success', 'Đã sửa thành công sản phẩm trong giỏ hàng.');

@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h1 class="fs-1 text-center m-3">Thông Tin</h1>
-        <p>Chào mừng bạn đến với BonsaiKT, nơi hội tụ vẻ đẹp tinh hoa của nghệ thuật bonsai!</p>
+        <p>Chào mừng bạn đến với Eden Greens, nơi hội tụ vẻ đẹp tinh hoa của nghệ thuật bonsai!</p>
 
         <p>Chúng tôi chuyên cung cấp những cây bonsai độc đáo, được uốn nắn tỉ mỉ và chăm sóc kỹ lưỡng, mang đến cho bạn không chỉ là một chậu cây mà còn là một tác phẩm nghệ thuật sống động. Với niềm đam mê và sự tận tâm, chúng tôi mong muốn giúp bạn sở hữu những cây bonsai tuyệt đẹp để làm đẹp không gian sống và thể hiện phong cách riêng của mình.</p>
 

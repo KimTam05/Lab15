@@ -10,4 +10,9 @@ class KNTSanpham extends Model
     use HasFactory;
     protected $table = 'kntsanpham';
     protected $fillable = ['kntMaSP','kntTenSP','kntHinhAnh','kntSoLuong','kntDongia','kntMaLoai','kntStatus'];
+    public function KNTCTGiohang()
+    {
+        return $this->hasMany(KNTCTGiohang::class, 'kntMaSP');
+    }
+
 }

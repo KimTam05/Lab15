@@ -4,8 +4,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-1"></div>
-        <div class="col-sm-10">
+        <div class="col-sm-12">
             <div class="banner">
                 <div class="banner-slide">
                     <div class="banner-item" style="background-image: ">
@@ -31,11 +30,10 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-1"></div>
         </div>
     </div>
 
-    <div class="row my-3">
+    <div class="row my-5">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
             <h1 class="fs-1 my-2 text-uppercase text-center">
@@ -43,19 +41,27 @@
             </h1>
             <div class="product-slider">
                 @foreach ($KNTSanpham as $item)
-                    <div class="product-item">
-                        <div class="product-image">
-                            <img src="{{asset('storage/' . $item->kntHinhAnh)}}" alt="{{ $item->kntTenSP }}">
-                        </div>
-                        <h5 class="caption">
-                            {{ $item->kntTenSP }}
-                        </h5>
+                    <div class="product-item text-center">
+                        <a href="{{ route('KNTuser.show', ['id' => $item->kntMaSP]) }}" class="text-decoration-none">
+                            <div class="product-image">
+                                <img src="{{ asset('storage/' . $item->kntHinhAnh) }}"
+                                     alt="{{ $item->kntTenSP }}"
+                                     class="img-fluid rounded">
+                            </div>
+                            <h5 class="caption mt-2 text-uppercase">
+                                {{ $item->kntTenSP }}
+                            </h5>
+                            <p class="price text-muted">
+                                {{ number_format($item->kntDongia, 0, ',', '.') }} VNĐ
+                            </p>
+                        </a>
                     </div>
                 @endforeach
             </div>
         </div>
         <div class="col-sm-1"></div>
     </div>
+
 </div>
 
 @endsection
